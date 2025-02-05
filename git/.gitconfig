@@ -1,0 +1,7 @@
+[user]
+	email = stirlingmattmarkus@gmail.com
+	name = Matt Stirling
+[pager]
+	branch = false
+[init]
+	defaultBranch = main

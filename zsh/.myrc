@@ -1,0 +1,119 @@
+# DOT FILE OF Matt Stirling
+
+
+# KEYBOARD SHORTCUTS
+
+bindkey -s '^H' '~/'
+
+
+# ENVIRONMENT VARIABLES
+
+export CONF_MY="$HOME/.myrc"
+export CONF_ZSH="$HOME/.zshrc"
+export CONF_BASH="$HOME/.bashrc"
+export CONF_ZSHTHEME="$ZSH/custom/themes/$ZSH_THEME.zsh-theme"
+export CONF_NVIM="$HOME/.config/nvim/init.lua"
+export CONF_TMUX="$HOME/.tmux.conf"
+
+export CHEAT_VIM="$HOME/cheatsheets/vim.md"
+export CHEAT_TMUX="$HOME/cheatsheets/tmux.md"
+
+
+# CUSTOM ALIASES
+
+alias tedit="nvim"
+alias nano="tedit"
+alias emacs="tedit"
+alias vim="tedit"
+
+alias myconfig="tedit $CONFIG_MY"
+
+alias lx="ls -lXh"
+alias py="python3"
+alias fe="explorer.exe ." # WSL SPECIFIC
+alias mdless="snap run mdless"
+
+
+# BASH FUNCTIONS
+
+# Function for activating python envs
+venv() {
+    # Define the base path for named environments
+    local BASE_ENV_PATH="$HOME/python_envs"
+    local ENV_PATH
+
+    if [[ -n "$1" ]]; then
+
+        if [[ $1 == -* ]]; then # handle arguments
+            if [[ ${1:1} == "ls" ]]; then
+                echo "Python VENVs found in '$BASE_ENV_PATH':"
+                ls -l "$BASE_ENV_PATH/"
+                echo
+            elif [[ ${1:1} == "d" ]]; then
+                echo "deactivating venv"
+                deactivate
+            elif [[ ${1:1} == "cd" ]]; then
+                cd $BASE_ENV_PATH
+            else
+                echo "No such option: '$1'"
+            fi
+            return 1
+        fi
+    
+        # If an argument is passed, use it as the environment name
+        ENV_PATH="$BASE_ENV_PATH/$1/bin/activate"
+    else
+        # If no argument is passed, check for local venvs
+        if [[ -f "venv/bin/activate" ]]; then
+            ENV_PATH="venv/bin/activate"
+        elif [[ -f ".venv/bin/activate" ]]; then
+            ENV_PATH=".venv/bin/activate"
+        else
+            echo "No virtual environment found in 'venv/bin/activate' or '.venv/bin/activate'."
+            return 1
+        fi
+    fi
+
+    # Activate the virtual environment if it exists
+    if [[ -f "$ENV_PATH" ]]; then
+        source "$ENV_PATH"
+        echo "Activated virtual environment at '$ENV_PATH'"
+    else
+        echo "Virtual environment not found at '$ENV_PATH'"
+        return 1
+    fi
+}
+
+
+# Function for cd-ing into the directory of a utility
+cmdcd() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: cmdcd UTILITY"
+        return 1
+    fi
+
+    # Get the full path of the utility
+    local CMD_PATH
+    CMD_PATH=$(which "$1" 2>/dev/null)
+
+    if [[ -z "$CMD_PATH" ]]; then
+        echo "Command '$1' not found."
+        return 1
+    fi
+
+    # Resolve symbolic links to the actual file
+    local REAL_PATH
+    REAL_PATH=$(readlink -f "$CMD_PATH")
+
+    # Extract the directory and change to it
+    local CMD_DIR
+    CMD_DIR=$(dirname "$REAL_PATH")
+
+    cd "$CMD_DIR" || {
+        echo "Failed to cd into $CMD_DIR."
+        return 1
+    }
+
+    echo "Changed directory to $CMD_DIR"
+}
+
