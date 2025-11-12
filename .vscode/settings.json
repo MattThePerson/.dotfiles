@@ -1,0 +1,140 @@
+{
+    "java.jdt.ls.java.home": "C:\\Program Files (x86)\\Java\\jdk-21.0.1",
+    "java.help.firstView": "gettingStarted",
+    "editor.suggestSelection": "first",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "explorer.confirmDragAndDrop": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "sonarlint.rules": {
+        "java:S1700": {
+            "level": "off"
+        }
+    },
+    "git.confirmSync": false,
+    "java.configuration.runtimes": [],
+    "java.autobuild.enabled": false,
+    "redhat.telemetry.enabled": false,
+    "jupyter.askForKernelRestart": false,
+    "editor.inlineSuggest.enabled": true,
+    "editor.inlineSuggest.suppressSuggestions": false,
+    "editor.parameterHints.cycle": true,
+    "editor.parameterHints.enabled": true,
+    "editor.inlayHints.enabled": "off",
+    "editor.hover.delay": 350,
+    "editor.hover.above": true,
+    "editor.hover.enabled": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.wordBasedSuggestions": "matchingDocuments",
+    "editor.snippetSuggestions": "top",
+    "editor.suggest.showClasses": true,
+    "editor.suggest.showWords": true,
+    "explorer.confirmDelete": false,
+    "workbench.startupEditor": "none",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.codeActionsOnSave": {
+        "code-runner.runInTerminal": "explicit"
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "window.titleBarStyle": "custom",
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "explorer.sortOrder": "type",
+    "[plaintext]": {
+        "editor.quickSuggestions": {
+            "other": false, // or "off"
+            "comments": false, // or "off"
+            "strings": false // or "off"
+        }
+    },
+    "[java]": {
+        "editor.suggest.snippetsPreventQuickSuggestions": false
+    },
+    "workbench.iconTheme": "Monokai Classic Icons",
+    "editor.find.cursorMoveOnType": false,
+    "notebook.editorOptionsCustomizations": {
+        "editor.tabSize": 4,
+        "editor.indentSize": 4,
+        "editor.insertSpaces": true
+    },
+    "editor.accessibilitySupport": "off",
+    "explorer.confirmPasteNative": false,
+    "security.allowedUNCHosts": [
+        "wsl.localhost"
+    ],
+
+    // python
+    "[python]": {
+        "editor.formatOnType": false
+    },
+    "python.defaultInterpreterPath": "C:\\Python311\\python.exe",
+    "python.analysis.typeCheckingMode": "standard",
+    "python.venvPath": "~/python_envs",
+    "remote.SSH.remotePlatform": {
+        "puhti.csc.fi": "linux"
+    },
+    "svelte.enable-ts-plugin": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "outline.collapseItems": "alwaysCollapse",
+    "editor.rulers": [
+        {   
+            "column": 80,    // spacing of 1st column from left
+            "color": "#ff990020"   // orange, Go Vols!
+        },
+            100,  // 2nd ruler with no color option
+        {
+            "column": 120,      // third ruler
+            "color": "#9f0af550"  // purple, go Pirates! 
+        },
+    ],
+    "window.restoreWindows": "none",
+    "explorer.autoReveal": false,
+    "workbench.tree.indent": 16,
+    "workbench.colorTheme": "Visual Studio Dark - C++",
+    "[javascript]": {
+        "editor.maxTokenizationLineLength": 2500
+    },
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "docker.extension.enableComposeLanguageServer": false,
+    "[html]": {
+        "editor.suggest.insertMode": "replace"
+    },
+
+    // cursor settings
+    "editor.cursorStyle": "block",
+    // "editor.lineNumbers": "relative",
+
+    // when scrolling with moving cursor up/down
+    "editor.cursorSurroundingLines": 5,
+    "editor.cursorSurroundingLinesStyle": "all",
+    "security.promptForLocalFileProtocolHandling": false,
+
+    // ctrl+tab behavious
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.openTabPreview": false,
+    "workbench.editor.openTabPreviewWithEditor": false,
+    "RainbowBrackets.depreciation-notice": false,
+    "indentRainbow.errorColor": "rgba(128,32,32,0)",
+    "github.showAvatar": false,
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    }
+
+    
+}
