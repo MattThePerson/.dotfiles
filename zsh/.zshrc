@@ -113,3 +113,12 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:$HOME/.local/bin"
 
 source ~/.myrc
+
+# GO VARIABLES
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

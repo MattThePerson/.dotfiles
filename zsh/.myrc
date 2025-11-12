@@ -18,6 +18,7 @@ export CONF_TMUX="$HOME/.tmux.conf"
 export CHEAT_VIM="$HOME/cheatsheets/vim.md"
 export CHEAT_TMUX="$HOME/cheatsheets/tmux.md"
 
+export WINHOME="/mnt/c/Users/stirl/" # Windows home
 
 # CUSTOM ALIASES
 
@@ -35,6 +36,11 @@ alias mdless="snap run mdless"
 
 
 # BASH FUNCTIONS
+
+# 
+cdlx() {
+    cd "$1" && ls -lXh
+}
 
 # Function for activating python envs
 venv() {
@@ -115,5 +121,10 @@ cmdcd() {
     }
 
     echo "Changed directory to $CMD_DIR"
+}
+
+# 
+cl() {
+    cd "$1" && ls -lah
 }
 
