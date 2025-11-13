@@ -34,6 +34,8 @@ alias py="python3"
 alias fe="explorer.exe ." # WSL SPECIFIC
 alias mdless="snap run mdless"
 
+alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git push"
+
 
 # BASH FUNCTIONS
 
@@ -43,15 +45,23 @@ cdlx() {
 }
 
 # Function for activating python envs
-venv() {
+genv() {
     # Define the base path for named environments
-    local BASE_ENV_PATH="$HOME/python_envs"
+    local BASE_ENV_PATH="$HOME/.python_envs"
     local ENV_PATH
 
     if [[ -n "$1" ]]; then
 
         if [[ $1 == -* ]]; then # handle arguments
-            if [[ ${1:1} == "ls" ]]; then
+            if [[ ${1:1} == "h" ]]; then
+                echo
+                echo "genv - utility for managing global python (uv) venvs"
+                echo "  [name]: activate venv at BASE_ENV_PATH/name/bin/activate"
+                echo "  -dir: print BASE_ENV_PATH"
+                echo "  -d: deactivate current venv"
+                echo "  -ls: list global envs"
+                echo "  -cd: cd to BASE_ENV_PATH"
+            elif [[ ${1:1} == "ls" ]]; then
                 echo "Python VENVs found in '$BASE_ENV_PATH':"
                 ls -l "$BASE_ENV_PATH/"
                 echo
@@ -60,6 +70,8 @@ venv() {
                 deactivate
             elif [[ ${1:1} == "cd" ]]; then
                 cd $BASE_ENV_PATH
+            elif [[ ${1:1} == "dir" ]]; then
+                echo "BASE_ENV_PATH: $BASE_ENV_PATH"
             else
                 echo "No such option: '$1'"
             fi
