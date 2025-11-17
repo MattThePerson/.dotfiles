@@ -1,5 +1,23 @@
-// Place your key bindings in this file to override the defaultsauto[]
+g/ Place your key bindings in this file to override the defaultsauto[]
 [
+
+   // terminal
+    {
+        "key": "ctrl+ö",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+shift+ö",
+        "command": "workbench.action.terminal.new"
+    },
+    {
+        "key": "ctrl+PageDown",
+        "command": "workbench.action.terminal.focusNext"
+    },
+    {
+        "key": "ctrl+PageUp",
+        "command": "workbench.action.terminal.focusPrevious"
+    }, 
 
     // VIM inspired HJKL
     {
