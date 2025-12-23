@@ -39,10 +39,6 @@ alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git
 
 # BASH FUNCTIONS
 
-# 
-cdlx() {
-    cd "$1" && ls -lXh
-}
 
 # Function for activating python envs
 genv() {
@@ -135,8 +131,79 @@ cmdcd() {
     echo "Changed directory to $CMD_DIR"
 }
 
-# 
-cl() {
+
+# cd into dir and list contents
+cdl() {
     cd "$1" && ls -lah
 }
+
+
+# YOING & YEET
+
+export YOINKED_CLIPBOARD="/tmp/yoinked_clipboard"
+
+yoink() {
+    
+    # read "$1"
+    local src="$1"
+
+    # check if $1 exists
+    if [[ -z "$src" || ! -e "$src" ]]; then
+        echo "Source does not exist."
+        return 1
+    fi
+
+    # write to file
+    echo "$(realpath "$src")" > "$YOINKED_CLIPBOARD"
+    echo "Added item to yeet: $src"
+}
+
+yeet() {
+
+    # check if file exists
+    if [[ ! -f "$YOINKED_CLIPBOARD" ]]; then
+        echo "Nothing to yeet!"
+        return 1
+    fi
+
+    # read from file and check if src exists
+    local src
+    src=$(<"$YOINKED_CLIPBOARD")
+    if [[ ! -e "$src" ]]; then
+        echo "Yeetable item doesn't exist: $src"
+        rm -f "$YOINKED_CLIPBOARD"
+        return 1
+    fi
+
+    # yeet check
+    if [[ "$1" == "check" ]]; then
+        echo "$src"
+        return 0
+    fi
+
+    # yeet copy
+    if [[ "$1" == "copy" ]]; then
+        if ! cp -r "$src" .; then
+	        echo "Failed to copy $src"
+	        return 1
+	    fi
+	    echo "Copied: $(basename "$src")"
+	    return 0
+    fi
+
+    # yeet UNKNOWN
+    if [[ -n "$1" ]]; then
+        echo "Unknown yeet command $1. Use 'check' or 'copy'"
+        return 1
+    fi
+
+    # attempt mv src dst
+    if ! mv "$src" .; then
+        echo "Failed to move $src"
+        return 1
+    fi
+    echo "Yeeted: $(basename "$src")"
+    rm -f "$YOINKED_CLIPBOARD"
+}
+
 
