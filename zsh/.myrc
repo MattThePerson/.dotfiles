@@ -36,6 +36,7 @@ alias mdless="snap run mdless"
 
 alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git push"
 
+alias code="codium"
 
 # BASH FUNCTIONS
 
