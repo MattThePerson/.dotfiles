@@ -132,5 +132,7 @@
     // "terminal.integrated.gpuAcceleration": "off",
     // "terminal.integrated.enablePersistentSessions": false,
     "terminal.integrated.stickyScroll.enabled": false,
-    "workbench.colorTheme": "Default Dark+"
+    "workbench.colorTheme": "Default Dark+",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true
 }

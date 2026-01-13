@@ -3,7 +3,7 @@
 
     // terminal
     {
-        "key": "ctrl+ö",
+        "key": "ctrl+[period]",
         "command": "workbench.action.terminal.toggleTerminal"
     },
     {

@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:$HOME/.cargo/env"
 export PATH="$PATH:$HOME/WhisperaHQ/bin"
 export PATH="$PATH:/usr/local/clion-2024.3.4/bin"
+export PATH="$PATH:$HOME/bin"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

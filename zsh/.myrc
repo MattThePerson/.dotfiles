@@ -1,12 +1,13 @@
-# DOT FILE OF Matt Stirling
+# Dotfile of Matti
 
 
-# KEYBOARD SHORTCUTS
+# General
 
 bindkey -s '^H' '~/'
+xset r rate 200 40
 
 
-# ENVIRONMENT VARIABLES
+# Environment variables
 
 export CONF_MY="$HOME/.myrc"
 export CONF_ZSH="$HOME/.zshrc"
@@ -20,7 +21,8 @@ export CHEAT_TMUX="$HOME/cheatsheets/tmux.md"
 
 export WINHOME="/mnt/c/Users/stirl/" # Windows home
 
-# CUSTOM ALIASES
+
+# Aliases
 
 alias tedit="nvim"
 alias nano="tedit"
@@ -38,8 +40,8 @@ alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git
 
 alias code="codium"
 
-# BASH FUNCTIONS
 
+# Bash functions
 
 # Function for activating python envs
 genv() {
