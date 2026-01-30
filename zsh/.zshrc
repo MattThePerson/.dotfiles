@@ -102,10 +102,10 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # PATH
-export PATH="$PATH:$HOME/.cargo/env"
-export PATH="$PATH:$HOME/WhisperaHQ/bin"
-export PATH="$PATH:/usr/local/clion-2024.3.4/bin"
 export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:/opt/nvim"
+export PATH="$PATH:$HOME/.cargo/env"
+export PATH="$PATH:/usr/local/clion-2024.3.4/bin"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -115,7 +115,6 @@ export NVM_DIR="$HOME/.nvm"
 # Created by `pipx` on 2025-01-03 17:25:51
 export PATH="$PATH:$HOME/.local/bin"
 
-source ~/.myrc
 
 # GO VARIABLES
 export GOROOT=/usr/local/go
@@ -125,3 +124,6 @@ export PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+source ~/.myrc
+

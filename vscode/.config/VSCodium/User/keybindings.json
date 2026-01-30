@@ -487,5 +487,15 @@
         "key": "ctrl+alt+k",
         "command": "-code-runner.runCustomCommand"
     },
+    {
+        "key": "shift+enter",
+        "command": "matlab.runSelection",
+        "when": "editorHasSelection && editorTextFocus && !editorHasMultipleSelections && !findInputFocussed && !matlab.isDebugging && !replaceInputFocussed && editorLangId == 'matlab'"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-matlab.runSelection",
+        "when": "editorHasSelection && editorTextFocus && !editorHasMultipleSelections && !findInputFocussed && !matlab.isDebugging && !replaceInputFocussed && editorLangId == 'matlab'"
+    },
     
 ]

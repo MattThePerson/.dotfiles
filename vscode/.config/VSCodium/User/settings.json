@@ -134,5 +134,9 @@
     "terminal.integrated.stickyScroll.enabled": false,
     "workbench.colorTheme": "Default Dark+",
     "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "terminal.integrated.initialHint": false,
+    "terminal.integrated.commandsToSkipShell": [
+        "matlab.interrupt"
+    ]
 }

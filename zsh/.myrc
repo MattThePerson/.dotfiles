@@ -4,7 +4,7 @@
 # General
 
 bindkey -s '^H' '~/'
-xset r rate 200 40
+xset r rate 150 40 # x11 (no Wayland)
 
 
 # Environment variables
@@ -25,82 +25,17 @@ export WINHOME="/mnt/c/Users/stirl/" # Windows home
 # Aliases
 
 alias tedit="nvim"
-alias nano="tedit"
-alias emacs="tedit"
-alias vim="tedit"
 
-alias myconfig="tedit $CONFIG_MY"
+alias myconfig="tedit $CONF_MY"
 
 alias lx="ls -lXh"
-alias py="python3"
-alias fe="explorer.exe ." # WSL SPECIFIC
-alias mdless="snap run mdless"
+alias fe="dolphin . &"
+#alias mdless="snap run mdless"
 
 alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git push"
 
-alias code="codium"
-
 
 # Bash functions
-
-# Function for activating python envs
-genv() {
-    # Define the base path for named environments
-    local BASE_ENV_PATH="$HOME/.python_envs"
-    local ENV_PATH
-
-    if [[ -n "$1" ]]; then
-
-        if [[ $1 == -* ]]; then # handle arguments
-            if [[ ${1:1} == "h" ]]; then
-                echo
-                echo "genv - utility for managing global python (uv) venvs"
-                echo "  [name]: activate venv at BASE_ENV_PATH/name/bin/activate"
-                echo "  -dir: print BASE_ENV_PATH"
-                echo "  -d: deactivate current venv"
-                echo "  -ls: list global envs"
-                echo "  -cd: cd to BASE_ENV_PATH"
-            elif [[ ${1:1} == "ls" ]]; then
-                echo "Python VENVs found in '$BASE_ENV_PATH':"
-                ls -l "$BASE_ENV_PATH/"
-                echo
-            elif [[ ${1:1} == "d" ]]; then
-                echo "deactivating venv"
-                deactivate
-            elif [[ ${1:1} == "cd" ]]; then
-                cd $BASE_ENV_PATH
-            elif [[ ${1:1} == "dir" ]]; then
-                echo "BASE_ENV_PATH: $BASE_ENV_PATH"
-            else
-                echo "No such option: '$1'"
-            fi
-            return 1
-        fi
-    
-        # If an argument is passed, use it as the environment name
-        ENV_PATH="$BASE_ENV_PATH/$1/bin/activate"
-    else
-        # If no argument is passed, check for local venvs
-        if [[ -f "venv/bin/activate" ]]; then
-            ENV_PATH="venv/bin/activate"
-        elif [[ -f ".venv/bin/activate" ]]; then
-            ENV_PATH=".venv/bin/activate"
-        else
-            echo "No virtual environment found in 'venv/bin/activate' or '.venv/bin/activate'."
-            return 1
-        fi
-    fi
-
-    # Activate the virtual environment if it exists
-    if [[ -f "$ENV_PATH" ]]; then
-        source "$ENV_PATH"
-        echo "Activated virtual environment at '$ENV_PATH'"
-    else
-        echo "Virtual environment not found at '$ENV_PATH'"
-        return 1
-    fi
-}
-
 
 # Function for cd-ing into the directory of a utility
 cmdcd() {
@@ -207,6 +142,16 @@ yeet() {
     fi
     echo "Yeeted: $(basename "$src")"
     rm -f "$YOINKED_CLIPBOARD"
+}
+
+
+# yazi: escape to folder
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
 }
 
 
