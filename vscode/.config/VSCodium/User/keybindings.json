@@ -74,7 +74,49 @@
     },
     
 
-    // text selection (based on above VIM and EMACS inspired keybinds)
+    // move by multiple lines
+    {
+        "key": "alt+i",
+        "command": "cursorMove",
+        "args": {
+            "to": "up",
+            "by": "line",
+            "value": 7
+        },
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+u",
+        "command": "cursorMove",
+        "args": {
+            "to": "down",
+            "by": "line",
+            "value": 7
+        },
+        "when": "editorTextFocus"
+    },
+
+    // jump by text/code blocks
+    {
+        "key": "alt+y",
+        "command": "cursorMove",
+        "when": "editorTextFocus", 
+        "args": {
+            "to": "nextBlankLine",
+            "by": "wrappedLine"
+        }
+    },
+    {
+        "key": "alt+o",
+        "command": "cursorMove",
+        "when": "editorTextFocus", 
+        "args": {
+            "to": "prevBlankLine",
+            "by": "wrappedLine"
+        }
+    },
+    
+    // TEXT SELECTION (based on above VIM and EMACS inspired keybinds)
     {
         "key": "shift+alt+e",
         "command": "cursorEndSelect",
@@ -115,6 +157,28 @@
         "command": "cursorUpSelect",
         "when": "textInputFocus"
     },
+    { // multiline select
+        "key": "shift+alt+i",
+        "command": "cursorMove",
+        "args": {
+            "to": "up",
+            "by": "line",
+            "value": 7,
+            "select": true,
+        },
+        "when": "editorTextFocus"
+    },
+    { // multiline select
+        "key": "shift+alt+u",
+        "command": "cursorMove",
+        "args": {
+            "to": "down",
+            "by": "line",
+            "value": 7,
+            "select": true
+        },
+        "when": "editorTextFocus"
+    },
 
     // comments
     {
@@ -128,48 +192,6 @@
         "when": "editorTextFocus && !editorReadonly"
     },
 
-    // move by multiple lines
-    {
-        "key": "alt+i",
-        "command": "cursorMove",
-        "args": {
-            "to": "up",
-            "by": "line",
-            "value": 7
-        },
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+u",
-        "command": "cursorMove",
-        "args": {
-            "to": "down",
-            "by": "line",
-            "value": 7
-        },
-        "when": "editorTextFocus"
-    },
-
-    // jump by blocks
-    {
-        "key": "alt+y",
-        "command": "cursorMove",
-        "when": "editorTextFocus", 
-        "args": {
-            "to": "nextBlankLine",
-            "by": "wrappedLine"
-        }
-    },
-    {
-        "key": "alt+o",
-        "command": "cursorMove",
-        "when": "editorTextFocus", 
-        "args": {
-            "to": "prevBlankLine",
-            "by": "wrappedLine"
-        }
-    },
-    
     // Insert cursor above/below
     {
         "key": "ctrl+alt+j",
@@ -198,7 +220,7 @@
     
     // go to definition
     {
-        "key": "alt+g",
+        "key": "alt+d",
         "command": "editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus"
     },
@@ -210,11 +232,11 @@
 
     // top/bottom of document
     {
-        "key": "shift+alt+i",
+        "key": "alt+g",
         "command": "cursorTop"
     },
     {
-        "key": "shift+alt+u",
+        "key": "shift+alt+g",
         "command": "cursorBottom"
     },
     

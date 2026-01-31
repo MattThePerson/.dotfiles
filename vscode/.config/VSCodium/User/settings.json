@@ -138,5 +138,6 @@
     "terminal.integrated.initialHint": false,
     "terminal.integrated.commandsToSkipShell": [
         "matlab.interrupt"
-    ]
+    ],
+    "window.newWindowProfile": "Default"
 }
