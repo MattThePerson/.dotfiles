@@ -1,13 +1,33 @@
-# Dotfile of Matti
+# .myrc
+# Matt the Person
 
 
-# General
+# --------------------------------
+# GENERAL
 
 bindkey -s '^H' '~/'
-xset r rate 150 40 # x11 (no Wayland)
+# xset r rate 150 40 # x11 (no Wayland)
 
 
-# Environment variables
+# --------------------------------
+# ALIASES
+
+alias lx="ls -lXh"
+
+alias ff="fzf"
+alias fff="fdfind . --type f | fzf"
+alias ffd="fdfind . --type d | fzf"
+
+alias tedit="nvim"
+alias fe="dolphin . &"
+#alias myconfig="tedit $CONF_MY"
+#alias mdless="snap run mdless"
+
+alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git push"
+
+
+# --------------------------------
+# ENV VARIABLES
 
 export CONF_MY="$HOME/.myrc"
 export CONF_ZSH="$HOME/.zshrc"
@@ -16,26 +36,14 @@ export CONF_ZSHTHEME="$ZSH/custom/themes/$ZSH_THEME.zsh-theme"
 export CONF_NVIM="$HOME/.config/nvim/init.lua"
 export CONF_TMUX="$HOME/.tmux.conf"
 
-export CHEAT_VIM="$HOME/cheatsheets/vim.md"
-export CHEAT_TMUX="$HOME/cheatsheets/tmux.md"
+#export CHEAT_VIM="$HOME/cheatsheets/vim.md"
+#export CHEAT_TMUX="$HOME/cheatsheets/tmux.md"
 
-export WINHOME="/mnt/c/Users/stirl/" # Windows home
-
-
-# Aliases
-
-alias tedit="nvim"
-
-alias myconfig="tedit $CONF_MY"
-
-alias lx="ls -lXh"
-alias fe="dolphin . &"
-#alias mdless="snap run mdless"
-
-alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git push"
+export WINHOME="/mnt/c/Users/stirl/" # Windows home (WSL)
 
 
-# Bash functions
+# --------------------------------
+# SHELL FUNCTOINS
 
 # Function for cd-ing into the directory of a utility
 cmdcd() {
