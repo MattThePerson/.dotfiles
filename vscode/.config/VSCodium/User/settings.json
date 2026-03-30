@@ -139,5 +139,8 @@
     "terminal.integrated.commandsToSkipShell": [
         "matlab.interrupt"
     ],
-    "window.newWindowProfile": "Default"
+    "window.newWindowProfile": "Default",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    }
 }

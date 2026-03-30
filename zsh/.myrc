@@ -17,14 +17,12 @@ alias lx="ls -lXh"
 alias ff="fzf"
 alias fff="fdfind . --type f | fzf"
 alias ffd="fdfind . --type d | fzf"
-
 alias tedit="nvim"
 alias fe="dolphin . &"
 #alias myconfig="tedit $CONF_MY"
 #alias mdless="snap run mdless"
 
 alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git push"
-
 
 # --------------------------------
 # ENV VARIABLES
@@ -44,6 +42,10 @@ export WINHOME="/mnt/c/Users/stirl/" # Windows home (WSL)
 
 # --------------------------------
 # SHELL FUNCTOINS
+
+cdff() {
+    cd "$(ffd)"
+}
 
 # Function for cd-ing into the directory of a utility
 cmdcd() {
