@@ -19,10 +19,8 @@ alias fff="fdfind . --type f | fzf"
 alias ffd="fdfind . --type d | fzf"
 alias tedit="nvim"
 alias fe="dolphin . &"
-#alias myconfig="tedit $CONF_MY"
-#alias mdless="snap run mdless"
-
 alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git push"
+alias co="codium"
 
 # --------------------------------
 # ENV VARIABLES
@@ -164,4 +162,8 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 

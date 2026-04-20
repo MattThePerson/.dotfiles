@@ -216,18 +216,16 @@
         "when": "editorTextFocus && !editorReadonly"
     },
     
-
-    
     // go to definition
     {
         "key": "alt+d",
         "command": "editor.action.revealDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus"
+        "when": "editorTextFocus && editorHasDefinitionProvider"
     },
     {
         "key": "alt+enter",
-        "command": "editor.action.revealDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus"
+        "command": "editor.action.openLink",
+        "when": "editorTextFocus"
     },
 
     // top/bottom of document
@@ -242,13 +240,20 @@
     
     // move view up/down (vim inspired)
     {
-        "key": "shift+alt+e",
+        "key": "shift+alt+o",
         "command": "scrollLineUp",
         "when": "textInputFocus"
     },
     {
         "key": "shift+alt+y",
         "command": "scrollLineDown",
+        "when": "textInputFocus"
+    },
+
+    // delete right
+    {
+        "key": "alt+backspace",
+        "command": "deleteRight",
         "when": "textInputFocus"
     },
     
@@ -529,6 +534,6 @@
         "key": "shift+enter",
         "command": "-matlab.runSelection",
         "when": "editorHasSelection && editorTextFocus && !editorHasMultipleSelections && !findInputFocussed && !matlab.isDebugging && !replaceInputFocussed && editorLangId == 'matlab'"
-    },
+    }
     
 ]
