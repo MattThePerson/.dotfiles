@@ -1,0 +1,119 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+    /* CONTEXT: Editor */
+    {
+        "context": "Editor",
+        "bindings": {
+            // HJKL
+            "alt-h": "editor::MoveLeft",
+            "alt-j": "editor::MoveDown",
+            "alt-k": "editor::MoveUp",
+            "alt-l": "editor::MoveRight",
+
+            // terminal
+            "ctrl-.": "terminal_panel::ToggleFocus",
+
+            "alt-u": [
+                "workspace::SendKeystrokes",
+                "down down down down down down down",
+            ],
+            "alt-i": ["workspace::SendKeystrokes", "up up up up up up up"],
+
+            // move line(s) up/down
+            "ctrl-shift-alt-j": "editor::MoveLineDown",
+            "ctrl-shift-alt-k": "editor::MoveLineUp",
+        },
+    },
+
+    /* CONTEXT: Editor with insert mode */
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {
+            // newlines
+            "ctrl-shift-enter": "editor::NewlineAbove",
+            "shift-enter": "editor::NewlineBelow",
+
+            // vim inspired HJKL
+            "shift-alt-h": "editor::SelectLeft",
+            "shift-alt-j": "editor::SelectDown",
+            "shift-alt-k": "editor::SelectUp",
+            "shift-alt-l": "editor::SelectRight",
+
+            // emacs inspired AEFB
+            "alt-b": "editor::MoveToPreviousWordStart",
+            "alt-f": "editor::MoveToNextWordEnd",
+            "alt-e": "editor::MoveToEndOfLine",
+            "alt-a": [
+                "editor::MoveToBeginningOfLine",
+                { "stop_at_soft_wraps": true, "stop_at_indent": true },
+            ],
+            "shift-alt-b": "editor::SelectToPreviousWordStart",
+            "shift-alt-f": "editor::SelectToNextWordEnd",
+            "shift-alt-e": "editor::SelectToEndOfLine",
+            "shift-alt-a": [
+                "editor::SelectToBeginningOfLine",
+                { "stop_at_soft_wraps": true, "stop_at_indent": true },
+            ],
+
+            // multiline select up/down (hacky)
+            "shift-alt-u": [
+                "workspace::SendKeystrokes",
+                "shift-down shift-down shift-down shift-down shift-down shift-down shift-down",
+            ],
+            "shift-alt-i": [
+                "workspace::SendKeystrokes",
+                "shift-up shift-up shift-up shift-up shift-up shift-up shift-up",
+            ],
+
+            // comments
+            "shift-alt-d": "editor::ToggleBlockComments",
+            "shift-alt-s": "editor::ToggleComments",
+
+            // multicursor
+            "ctrl-alt-j": [
+                "editor::AddSelectionBelow",
+                {
+                    "skip_soft_wrap": true,
+                },
+            ],
+            "ctrl-alt-k": [
+                "editor::AddSelectionAbove",
+                {
+                    "skip_soft_wrap": true,
+                },
+            ],
+        },
+    },
+
+    /* CONTEXT: Terminal */
+    {
+        "context": "Terminal",
+        "unbind": {
+            "ctrl-j": "workspace::ToggleBottomDock", // to remove muscle memory
+        },
+        "bindings": {
+            // ctrl-p/n
+            "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
+            "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"],
+
+            "ctrl-:": "workspace::NewTerminal",
+            "ctrl-1": "editor::ToggleFocus",
+
+            "ctrl-.": "workspace::ToggleBottomDock",
+        },
+    },
+
+    // accidentally hit too many times
+    {
+        "context": "Workspace",
+        "unbind": {
+            "ctrl-?": "agent::ToggleFocus",
+        },
+    },
+]

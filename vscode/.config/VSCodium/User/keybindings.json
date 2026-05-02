@@ -313,14 +313,14 @@
         "command": "cursorBottom"
     },
 
-    // move view up/down (vim inspired)
+    // move view up/down
     {
-        "key": "shift+alt+y",
+        "key": "shift+alt+o",
         "command": "scrollLineUp",
         "when": "textInputFocus"
     },
     {
-        "key": "shift+alt+e",
+        "key": "shift+alt+y",
         "command": "scrollLineDown",
         "when": "textInputFocus"
     },
