@@ -6,7 +6,15 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
-    /* CONTEXT: Editor */
+
+    // UNIVERSAL
+    {
+        "bindings": {
+            "ctrl-.": "terminal_panel::Toggle"
+        }
+    },
+
+    // EDITOR
     {
         "context": "Editor",
         "bindings": {
@@ -17,7 +25,6 @@
             "alt-l": "editor::MoveRight",
 
             // terminal
-            "ctrl-.": "terminal_panel::ToggleFocus",
 
             "alt-u": [
                 "workspace::SendKeystrokes",
@@ -31,7 +38,7 @@
         },
     },
 
-    /* CONTEXT: Editor with insert mode */
+    // EDITOR (vim insert mode)
     {
         "context": "Editor && vim_mode == insert",
         "bindings": {
@@ -91,25 +98,21 @@
         },
     },
 
-    /* CONTEXT: Terminal */
+    // TERMINAL
     {
         "context": "Terminal",
         "unbind": {
             "ctrl-j": "workspace::ToggleBottomDock", // to remove muscle memory
         },
         "bindings": {
-            // ctrl-p/n
             "ctrl-p": ["terminal::SendKeystroke", "ctrl-p"],
             "ctrl-n": ["terminal::SendKeystroke", "ctrl-n"],
-
             "ctrl-:": "workspace::NewTerminal",
             "ctrl-1": "editor::ToggleFocus",
-
-            "ctrl-.": "workspace::ToggleBottomDock",
         },
     },
 
-    // accidentally hit too many times
+    // Remove (accidentally hit too many times)
     {
         "context": "Workspace",
         "unbind": {
