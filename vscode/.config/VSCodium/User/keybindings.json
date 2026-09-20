@@ -1,284 +1,16 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
-    // =========================================================================
-    // Application Keybinds
-    // =========================================================================
-
-    // terminal
-    {
-        "key": "ctrl+[period]",
-        "command": "workbench.action.terminal.toggleTerminal"
-    },
-    {
-        "key": "ctrl+shift+[Period]",
-        "command": "workbench.action.terminal.new"
-    },
-    {
-        "key": "ctrl+PageDown",
-        "command": "workbench.action.terminal.focusNext"
-    },
-    {
-        "key": "ctrl+PageUp",
-        "command": "workbench.action.terminal.focusPrevious"
-    },
-
-    // autocomplete selection
-    {
-        "key": "tab",
-        "command": "selectNextSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-    },
-    {
-        "key": "down",
-        "command": "-selectNextSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-    },
-    {
-        "key": "shift+tab",
-        "command": "selectPrevSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-    },
-    {
-        "key": "up",
-        "command": "-selectPrevSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-    },
-
-    // go to definition
-    {
-        "key": "alt+d",
-        "command": "editor.action.revealDefinition",
-        "when": "editorTextFocus && editorHasDefinitionProvider"
-    },
-    {
-        "key": "alt+enter",
-        "command": "editor.action.openLink",
-        "when": "editorTextFocus"
-    },
-
-    // tab switching
-    {
-        "key": "ctrl+shift+tab",
-        "command": "workbench.action.previousEditor"
-    },
-    {
-        "key": "ctrl+tab",
-        "command": "workbench.action.nextEditor"
-    },
-
-    { // matching bracket
-        "key": "ctrl+shift+m",
-        "command": "editor.action.jumpToBracket",
-        "when": "editorTextFocus"
-    },
-
-    // reload window
-    {
-        "key": "ctrl+shift+r",
-        "command": "workbench.action.reloadWindow",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+r",
-        "command": "-editor.action.refactor",
-        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+alt+r",
-        "command": "editor.action.refactor",
-        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
-    },
-
-    // go to file (disable default ctrl+e)
-    {
-        "key": "ctrl+g ctrl+f",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "-workbench.action.quickOpen"
-    },
-    { // remove ctrl+p from default keybind (so ctrl+p works in terminal)
-        "key": "ctrl+p",
-        "command": "-workbench.action.quickOpen"
-    },
 
     // =========================================================================
-    // Text Editing Keybinds
+    // APPLICATION
     // =========================================================================
-
-    // VIM inspired HJKL
+    
+    // toggle VIM extension
     {
-        "key": "alt+j",
-        "command": "cursorDown",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "alt+k",
-        "command": "cursorUp",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "alt+h",
-        "command": "cursorLeft",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "alt+l",
-        "command": "cursorRight",
-        "when": "textInputFocus"
-    },
-
-    // EMACS inspired AEFB
-    {
-        "key": "alt+b",
-        "command": "cursorWordLeft",
-        "when": "textInputFocus && !accessibilityModeEnabled"
-    },
-    {
-        "key": "alt+f",
-        "command": "cursorWordEndRight",
-        "when": "textInputFocus && !accessibilityModeEnabled"
-    },
-    {
-        "key": "alt+e",
-        "command": "cursorEnd",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "alt+a",
-        "command": "cursorHome",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "alt+n",
-        "command": "workbench.action.navigateForward", // forward in history
-        "when": "canNavigateForward"
-    },
-    {
-        "key": "alt+p",
-        "command": "workbench.action.navigateBack", // forward in history
-        "when": "canNavigateBack"
-    },
-
-    // move by multiple lines
-    {
-        "key": "alt+i",
-        "command": "cursorMove",
-        "args": {
-            "to": "up",
-            "by": "line",
-            "value": 7
-        },
+        "key": "f8",
+        "command": "toggleVim",
         "when": "editorTextFocus"
     },
-    {
-        "key": "alt+u",
-        "command": "cursorMove",
-        "args": {
-            "to": "down",
-            "by": "line",
-            "value": 7
-        },
-        "when": "editorTextFocus"
-    },
-
-    // jump by text/code blocks
-    {
-        "key": "alt+y",
-        "command": "cursorMove",
-        "when": "editorTextFocus",
-        "args": {
-            "to": "nextBlankLine",
-            "by": "wrappedLine"
-        }
-    },
-    {
-        "key": "alt+o",
-        "command": "cursorMove",
-        "when": "editorTextFocus",
-        "args": {
-            "to": "prevBlankLine",
-            "by": "wrappedLine"
-        }
-    },
-
-    // TEXT SELECTION (based on above VIM and EMACS inspired keybinds)
-    {
-        "key": "shift+alt+e",
-        "command": "cursorEndSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+a",
-        "command": "cursorHomeSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+h",
-        "command": "cursorLeftSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+l",
-        "command": "cursorRightSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+b",
-        "command": "cursorWordLeftSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+f",
-        "command": "cursorWordRightSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+j",
-        "command": "cursorDownSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+k",
-        "command": "cursorUpSelect",
-        "when": "textInputFocus"
-    },
-    { // multiline select
-        "key": "shift+alt+i",
-        "command": "cursorMove",
-        "args": {
-            "to": "up",
-            "by": "line",
-            "value": 7,
-            "select": true,
-        },
-        "when": "editorTextFocus"
-    },
-    { // multiline select
-        "key": "shift+alt+u",
-        "command": "cursorMove",
-        "args": {
-            "to": "down",
-            "by": "line",
-            "value": 7,
-            "select": true
-        },
-        "when": "editorTextFocus"
-    },
-
-    // comments
-    {
-        "key": "shift+alt+s",
-        "command": "editor.action.commentLine",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "shift+alt+d",
-        "command": "editor.action.blockComment",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-
+    
     // Insert cursor above/below
     {
         "key": "ctrl+alt+j",
@@ -303,241 +35,83 @@
         "when": "editorTextFocus && !editorReadonly"
     },
 
-    // top/bottom of document
+    // normal fucking find
     {
-        "key": "alt+g",
-        "command": "cursorTop"
-    },
-    {
-        "key": "shift+alt+g",
-        "command": "cursorBottom"
+        "key": "shift+alt+f",
+        "command": "actions.find",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
     },
 
-    // move view up/down
+    // open folder workbench
     {
-        "key": "shift+alt+o",
-        "command": "scrollLineUp",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+alt+y",
-        "command": "scrollLineDown",
-        "when": "textInputFocus"
+        "key": "ctrl+shift+e",
+        "command": "workbench.view.explorer"
     },
 
-    // delete -> alt+backspace
+    // =========================================================================
+    // TERMINAL
+    // =========================================================================
+    
+    // toggle terminal
     {
-        "key": "alt+backspace",
-        "command": "deleteRight",
-        "when": "textInputFocus"
+        "key": "ctrl+[period]",
+        "command": "workbench.action.terminal.toggleTerminal"
     },
     {
-        "key": "ctrl+alt+backspace",
-        "command": "deleteWordRight",
-        "when": "textInputFocus && !editorReadonly"
+        "key": "ctrl+shift+[Period]",
+        "command": "workbench.action.terminal.new"
     },
 
-    // - OTHER STUFF -----------------------------------------------------------
-    // {
-    //     "key": "ctrl+pageup",
-    //     "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
-    //     "when": "!activeEditorGroupEmpty"
-    // },
-    // {
-    //     "key": "ctrl+pageup",
-    //     "command": "-workbench.action.previousEditor"
-    // },
-    // {
-    //     "key": "ctrl+pagedown",
-    //     "command": "-workbench.action.nextEditor"
-    // },
-    // {
-    //     "key": "ctrl+pagedown",
-    //     "command": "workbench.action.quickOpenLeastRecentlyUsedEditorInGroup",
-    //     "when": "!activeEditorGroupEmpty"
-    // },
-    // {
-    //     "key": "ctrl+shift+tab",
-    //     "command": "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup",
-    //     "when": "!activeEditorGroupEmpty"
-    // },
-    // {
-    //     "key": "ctrl+oem_2",
-    //     "command": "-editor.action.commentLine",
-    //     "when": "editorTextFocus && !editorReadonly"
-    // },
-    // {
-    //     "key": "ctrl+shift+i",
-    //     "command": "editor.action.sourceAction"
-    // },
-    // {
-    //     "key": "alt+d",
-    //     "command": "-plantuml.preview"
-    // },
-    // {
-    //     "key": "alt+e",
-    //     "command": "keybindings.editor.recordSearchKeys",
-    //     "when": "inKeybindings && inKeybindingsSearch"
-    // },
-    // {
-    //     "key": "alt+k",
-    //     "command": "-keybindings.editor.recordSearchKeys",
-    //     "when": "inKeybindings && inKeybindingsSearch"
-    // },
-    // {
-    //     "key": "alt+r",
-    //     "command": "filesExplorer.findInFolder",
-    //     "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus"
-    // },
-    // {
-    //     "key": "shift+alt+f",
-    //     "command": "-filesExplorer.findInFolder",
-    //     "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus"
-    // },
-    // {
-    //     "key": "alt+h",
-    //     "command": "-git.viewFileHistory"
-    // },
-    // {
-    //     "key": "alt+h",
-    //     "command": "-testing.toggleTestingPeekHistory",
-    //     "when": "testing.isPeekVisible"
-    // },
-    // {
-    //     "key": "alt+l",
-    //     "command": "-toggleSearchEditorContextLines",
-    //     "when": "inSearchEditor"
-    // },
-    // {
-    //     "key": "alt+l",
-    //     "command": "-toggleFindInSelection",
-    //     "when": "editorFocus"
-    // },
-    // {
-    // {
-    //     "key": "shift+alt+d",
-    //     "command": "-editor.detectLanguage",
-    //     "when": "editorTextFocus && !notebookEditable"
-    // },
-    // {
-    //     "key": "shift+alt+d",
-    //     "command": "-notebook.cell.detectLanguage",
-    //     "when": "notebookCellEditable && notebookEditable"
-    // },
-    // {
-    //     "key": "shift+alt+f",
-    //     "command": "-notebook.format",
-    //     "when": "notebookEditable && !editorTextFocus && activeEditor == 'workbench.editor.notebook'"
-    // },
-    // {
-    //     "key": "shift+alt+3",
-    //     "command": "editor.action.formatDocument",
-    //     "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-    // },
-    // {
-    //     "key": "shift+alt+f",
-    //     "command": "-editor.action.formatDocument",
-    //     "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-    // },
-    // {
-    //     "key": "shift+alt+0",
-    //     "command": "-workbench.action.toggleEditorGroupLayout"
-    // },
-    // {
-    //     "key": "shift+alt+3",
-    //     "command": "notebook.formatCell",
-    //     "when": "editorHasDocumentFormattingProvider && editorTextFocus && inCompositeEditor && notebookEditable && !editorReadonly && activeEditor == 'workbench.editor.notebook'"
-    // },
-    // {
-    //     "key": "shift+alt+f",
-    //     "command": "-notebook.formatCell",
-    //     "when": "editorHasDocumentFormattingProvider && editorTextFocus && inCompositeEditor && notebookEditable && !editorReadonly && activeEditor == 'workbench.editor.notebook'"
-    // },
-    // {
-    //     "key": "shift+alt+3",
-    //     "command": "editor.action.formatDocument.none",
-    //     "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
-    // },
-    // {
-    //     "key": "shift+alt+f",
-    //     "command": "-editor.action.formatDocument.none",
-    //     "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
-    // },
-    // {
-    //     "key": "ctrl+shift+alt+enter",
-    //     "command": "python.execSelectionInTerminal",
-    //     "when": "editorTextFocus && !findInputFocussed && !jupyter.ownsSelection && !notebookEditorFocused && !replaceInputFocussed && editorLangId == 'python'"
-    // },
-    // {
-    //     "key": "shift+enter",
-    //     "command": "-python.execSelectionInTerminal",
-    //     "when": "editorTextFocus && !findInputFocussed && !jupyter.ownsSelection && !notebookEditorFocused && !replaceInputFocussed && editorLangId == 'python'"
-    // },
-    // {
-    //     "key": "ctrl+pageup",
-    //     "command": "workbench.action.terminal.focusPrevious",
-    //     "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-    // },
-    // {
-    //     "key": "ctrl+pagedown",
-    //     "command": "workbench.action.terminal.focusNext",
-    //     "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-    // },
-    // {
-    //     "key": "ctrl+right",
-    //     "command": "workbench.action.quickOpenNavigateNextInTerminalPicker",
-    //     "when": "terminalFocus"
-    // },
-    // {
-    //     "key": "ctrl+left",
-    //     "command": "workbench.action.quickOpenNavigatePreviousInTerminalPicker",
-    //     "when": "terminalFocus"
-    // },
-    // {
-    //     "key": "ctrl+shift+home",
-    //     "command": "editor.action.revealDefinition",
-    //     "when": "editorHasDefinitionProvider && editorTextFocus"
-    // },
-    // {
-    //     "key": "f12",
-    //     "command": "-editor.action.revealDefinition",
-    //     "when": "editorHasDefinitionProvider && editorTextFocus"
-    // },
-    // {
-    //     "key": "ctrl+shift+m",
-    //     "command": "-workbench.actions.view.problems",
-    //     "when": "workbench.panel.markers.view.active"
-    // },
-    // {
-    //     "key": "ctrl+shift+oem_5",
-    //     "command": "-editor.action.jumpToBracket",
-    //     "when": "editorTextFocus"
-    // },
-    // {
-    //     "key": "ctrl+shift+j",
-    //     "command": "workbench.action.quickOpenNavigateNextInFilePicker",
-    //     "when": "inFilesPicker && inQuickOpen"
-    // },
-    // {
-    //     "key": "ctrl+shift+oem_comma",
-    //     "command": "editor.action.selectToBracket"
-    // },
-    // {
-    //     "key": "ctrl+alt+j",
-    //     "command": "-code-runner.runByLanguage"
-    // },
-    // {
-    //     "key": "ctrl+alt+k",
-    //     "command": "-code-runner.runCustomCommand"
-    // },
-    // {
-    //     "key": "shift+enter",
-    //     "command": "matlab.runSelection",
-    //     "when": "editorHasSelection && editorTextFocus && !editorHasMultipleSelections && !findInputFocussed && !matlab.isDebugging && !replaceInputFocussed && editorLangId == 'matlab'"
-    // },
-    // {
-    //     "key": "shift+enter",
-    //     "command": "-matlab.runSelection",
-    //     "when": "editorHasSelection && editorTextFocus && !editorHasMultipleSelections && !findInputFocussed && !matlab.isDebugging && !replaceInputFocussed && editorLangId == 'matlab'"
-    // },
+    // cycle terminal tabs while focused
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+
+    // disable ctrl+p
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen",
+        "when": "!terminalFocus"
+    },
+
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u000b" },
+        "when": "terminalFocus"
+    },
+
+    // =========================================================================
+    // APPLICATION (more)
+    // =========================================================================
+    
+    // ctrl+n/p cycle quickOpen options
+    // NB: Must define AFTER existing ctrl+p entries (concerning terminal)
+    {
+        "key": "ctrl+p",
+        "command": "list.focusUp",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "list.focusDown",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+
 ]
