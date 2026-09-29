@@ -127,3 +127,15 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "$(fnm env --shell zsh)"
 fi
+
+export PATH="$PATH:/home/matti/opt/mysql-shell-26.7.1-linux-glibc2.28-x86-64bit/bin"
+export PATH="$PATH:/usr/share/code/bin"
+
+# mise (for ruby)
+eval "$(~/.local/bin/mise activate)"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
