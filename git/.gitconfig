@@ -5,3 +5,5 @@
 	branch = false
 [init]
 	defaultBranch = main
+[core]
+	hooksPath = /home/matti/.config/git/hooks

@@ -1,0 +1,10 @@
+#!/bin/sh
+# Warn if a staged notebook has execution counts (not cleared/restarted).
+git diff --cached --name-only --diff-filter=ACM | grep '\.ipynb$' | while IFS= read -r f; do
+  if git show ":$f" | grep -q '"execution_count": *[0-9]'; then
+    echo "WARNING: $f has execution counts/outputs"
+    echo "commit aborted"
+    exit 1
+  fi
+done
+
