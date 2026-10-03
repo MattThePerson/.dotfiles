@@ -9,7 +9,7 @@ config.font_size = 12
 
 -- keys
 config.keys = {
-	-- { key = ":", mod = "SUPER", action = wezterm.action.SpawnTab("CurrentPaneDomain") }, -- doesn't seem to work
+	{ key = "Tab", mods = "CTRL", action = act.ActivateLastTab },
 }
 
 -- alt+n tab switching
@@ -20,5 +20,19 @@ for i = 1, 9 do
 		action = act.ActivateTab(i - 1),
 	})
 end
+
+-- rename tab
+table.insert(config.keys, {
+  key = 'r',
+  mods = 'CTRL|SHIFT',
+  action = act.PromptInputLine {
+    description = 'Rename tab:',
+    action = wezterm.action_callback(function(window, pane, line)
+      if line then
+        window:active_tab():set_title(line)
+      end
+    end),
+  },
+})
 
 return config
