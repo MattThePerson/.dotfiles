@@ -3,55 +3,23 @@
     // =========================================================================
     // APPLICATION
     // =========================================================================
-    
-    // toggle VIM extension
-    {
-        "key": "f8",
-        "command": "toggleVim",
-        "when": "editorTextFocus"
-    },
-    
-    // Insert cursor above/below
-    {
-        "key": "ctrl+alt+j",
-        "command": "editor.action.insertCursorBelow",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+alt+k",
-        "command": "editor.action.insertCursorAbove",
-        "when": "editorTextFocus"
-    },
 
-    // move line up/down
-    {
-        "key": "ctrl+shift+alt+k",
-        "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+alt+j",
-        "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-
-    // normal fucking find
-    {
-        "key": "shift+alt+f",
-        "command": "actions.find",
-        "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
-    },
-
-    // open folder workbench
+    // open folder workbench (sometimes not bound?)
     {
         "key": "ctrl+shift+e",
         "command": "workbench.view.explorer"
     },
 
+    // open settings.json
+    {
+        "key": "ctrl+;",
+        "command": "workbench.action.openSettingsJson"
+    },
+
     // =========================================================================
     // TERMINAL
     // =========================================================================
-    
+
     // toggle terminal
     {
         "key": "ctrl+[period]",
@@ -85,6 +53,7 @@
         "when": "!terminalFocus"
     },
 
+    // delete right of cursor
     {
         "key": "ctrl+k",
         "command": "workbench.action.terminal.sendSequence",
@@ -92,10 +61,67 @@
         "when": "terminalFocus"
     },
 
+    // toggle maximize terminal (inspired by Zed)
+    {
+        "key": "shift+escape",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus && (panelAlignment == 'center' || panelPosition != 'bottom' && panelPosition != 'top')"
+    },
+
     // =========================================================================
-    // APPLICATION (more)
+    // EDITOR: vim compatible
     // =========================================================================
-    
+
+    // toggle VIM extension
+    {
+        "key": "f8",
+        "command": "toggleVim",
+        "when": "editorTextFocus"
+    },
+
+    // Insert cursor above/below
+    {
+        "key": "ctrl+alt+j",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+
+    // move line up/down
+    {
+        "key": "ctrl+shift+alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+
+    // normal fucking find
+    {
+        "key": "shift+alt+f",
+        "command": "actions.find",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+    },
+
+    // show hover
+    {
+        "key": "shift+k", // vim default
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+k ctrl+i",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+
     // ctrl+n/p cycle quickOpen options
     // NB: Must define AFTER existing ctrl+p entries (concerning terminal)
     {
