@@ -22,15 +22,21 @@ alias ff="fzf"
 alias fff="fdfind . --type f | fzf"
 alias ffd="fdfind . --type d | fzf"
 alias fe="setsid dolphin . >/dev/null 2>&1 &" # open dolphin and forget about process
-alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git push"
-alias gitlog="git log --oneline"
-alias gitcom="git commit -m"
 alias co="codium"
 alias qu="exit"
 
 alias bat="batcat" # batcat is bat
 alias batjson="bat -l json"
 alias less="bat"
+
+# - GIT -
+alias gits="git status"
+alias gita="git add"
+alias gitd="git diff"
+alias gitr="git restore --staged"
+alias gitl="git log --oneline"
+alias gitc="git commit -m"
+alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git push"
 
 # --------------------------------
 # ENVIRONMENT VARIABLES
@@ -53,6 +59,20 @@ export WINHOME="/mnt/c/Users/stirl/" # Windows home (WSL)
 # --------------------------------
 # SHELL FUNCTIONS
 # --------------------------------
+
+# yazi: escape to folder
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+# cd into dir and list contents
+cdl() {
+    cd "$1" && ls -lah
+}
 
 # Function for cd-ing into the directory of a utility
 cmdcd() {
@@ -86,12 +106,38 @@ cmdcd() {
     echo "Changed directory to $CMD_DIR"
 }
 
-# cd into dir and list contents
-cdl() {
-    cd "$1" && ls -lah
+# open cheatsheets
+cheat() {
+    local dir="$HOME/cheatsheets"
+    local file="$dir/$1.md"
+    local viewer=(less)
+
+    if [ ! -d "$dir" ]; then
+        echo "Directory $dir does not exist." >&2
+        return 1
+    fi
+
+    if [ ! -f "$file" ]; then
+        [ -n "$1" ] && echo "No cheatsheet found for '$1'." >&2
+        echo "Available cheatsheets:"
+        ls -1 "$dir" | sed 's/\.md$//'
+        return 1
+    fi
+
+    if command -v batcat >/dev/null 2>&1; then
+        viewer=(batcat --language=markdown)
+    elif command -v bat >/dev/null 2>&1; then
+        viewer=(bat --language=markdown)
+    else
+        echo "Warning: bat is not installed; falling back to less." >&2
+    fi
+
+    "${viewer[@]}" "$file"
 }
 
+# ---------------------
 # YOING & YEET
+# ---------------------
 
 export YOINKED_CLIPBOARD="/tmp/yoinked_clipboard"
 
@@ -157,14 +203,5 @@ yeet() {
     fi
     echo "Yeeted: $(basename "$src")"
     rm -f "$YOINKED_CLIPBOARD"
-}
-
-# yazi: escape to folder
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	command yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
 }
 
