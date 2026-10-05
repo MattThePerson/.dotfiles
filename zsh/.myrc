@@ -1,5 +1,7 @@
 # rc file for Matt the Person
 
+source <(fzf --zsh)
+
 # --------------------------------
 # GENERAL
 # --------------------------------
@@ -15,9 +17,12 @@ alias nvim-lazy="NVIM_APPNAME=nvim-lazyvim nvim"
 alias lvim="nvim-lazy"
 alias nvim-kick="NVIM_APPNAME=nvim-kickstart nvim"
 alias kvim="nvim-kick"
+alias nvim-nvchad="NVIM_APPNAME=nvim-nvchad nvim"
+alias nvchad="nvim-nvchad"
 
 alias lx="ls -lXh"
 
+alias fd="fdfind"
 alias ff="fzf"
 alias fff="fdfind . --type f | fzf"
 alias ffd="fdfind . --type d | fzf"
@@ -42,7 +47,7 @@ alias gitsync="git add . && git commit -m 'git sync' && git pull --rebase && git
 # ENVIRONMENT VARIABLES
 # --------------------------------
 
-export MANPAGER="bat -plman" # man with syntax highlighting
+export MANPAGER="batcat -plman" # man with syntax highlighting
 
 export CONF_MY="$HOME/.myrc"
 export CONF_ZSH="$HOME/.zshrc"
